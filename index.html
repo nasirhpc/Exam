@@ -1,36 +1,6 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Vercel Gateway</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; }
-        nav { background-color: #333; padding: 1rem; text-align: center; }
-        nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; padding: 8px 15px; border-radius: 5px; transition: 0.3s; }
-        nav a:hover { background-color: #555; }
-        .active { background-color: #007bff; }
-        .locked { color: #ffcc00 !important; } /* পাসওয়ার্ড প্রোটেক্টেড লিংক বোঝাতে */
-        .container { text-align: center; margin-top: 100px; padding: 20px; }
-        h1 { color: #333; }
-        p { color: #666; }
-    </style>
-</head>
-<body>
-
 <nav>
     <a href="/" class="active">Home</a>
-    <a href="/?p=marks" class="locked">Marks 🔒</a>
-    <a href="/?p=fail">Fail List</a>
+    <a href="/?p=marks">Marks</a> <a href="/?p=fail">Fail List</a>
     <a href="/?p=sms">SMS Status</a>
     <a href="/?p=qmarks">Q-Marks</a>
 </nav>
-
-<div class="container">
-    <h1>স্বাগতম!</h1>
-    <p>নিচের বাটনগুলো ব্যবহার করে আপনার কাঙ্ক্ষিত তথ্য দেখুন।</p>
-    <p><strong>দ্রষ্টব্য:</strong> "Marks" সেকশনে ঢুকতে পাসওয়ার্ড লাগবে।</p>
-</div>
-
-</body>
-</html>
