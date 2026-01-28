@@ -1,6 +1,190 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result & Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #64748b;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+        }
+
+        body {
+            font-family: 'Inter', 'Hind Siliguri', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: #eff6ff;
+            color: var(--primary-color);
+        }
+
+        .active-link {
+            background-color: var(--primary-color) !important;
+            color: white !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white;
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .hero p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        /* Dashboard Grid */
+        .container {
+            max-width: 1000px;
+            margin: -40px auto 40px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px 20px;
+            border-radius: 16px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-main);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            border-color: var(--primary-color);
+        }
+
+        .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .card h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 20px;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .nav-links { display: none; } /* মোবাইলে মেনু হাইড রাখা হয়েছে স্টাইল ঠিক রাখতে */
+            .hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
 <nav>
-    <a href="/" class="active">Home</a>
-    <a href="/?p=marks">Marks</a> <a href="/?p=fail">Fail List</a>
-    <a href="/?p=sms">SMS Status</a>
-    <a href="/?p=qmarks">Q-Marks</a>
+    <a href="/" class="logo">Portal</a>
+    <div class="nav-links">
+        <a href="/" class="active-link">Home</a>
+        <a href="/?p=marks">Marks</a>
+        <a href="/?p=fail">Fail List</a>
+        <a href="/?p=sms">SMS</a>
+    </div>
 </nav>
+
+<div class="hero">
+    <h1>Result Dashboard</h1>
+    <p>আপনার প্রয়োজনীয় তথ্য নিচে ক্লিক করে দেখুন</p>
+</div>
+
+<div class="container">
+    <a href="/?p=marks" class="card">
+        <span class="icon">📊</span>
+        <h3>Marks Sheet</h3>
+    </a>
+    
+    <a href="/?p=fail" class="card">
+        <span class="icon">❌</span>
+        <h3>Fail List</h3>
+    </a>
+
+    <a href="/?p=sms" class="card">
+        <span class="icon">📩</span>
+        <h3>SMS Status</h3>
+    </a>
+
+    <a href="/?p=qmarks" class="card">
+        <span class="icon">📝</span>
+        <h3>Q-Marks</h3>
+    </a>
+</div>
+
+<footer>
+    &copy; 2024 System Created by Nasir | Powered by Vercel & Google
+</footer>
+
+</body>
+</html>
