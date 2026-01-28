@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server';
 
 export function middleware(req) {
-  const { nextUrl } = req;
-  const pParam = nextUrl.searchParams.get('p');
+  const url = new URL(req.url);
+  const pParam = url.searchParams.get('p');
 
   // কেবল ?p=marks থাকলে পাসওয়ার্ড চাইবে
   if (pParam === 'marks') {
@@ -19,18 +19,16 @@ export function middleware(req) {
     const user = auth[0];
     const pass = auth[1];
 
-    // এখানে আপনার পছন্দের ইউজার এবং পাসওয়ার্ড দিন
-    if (user === 'admin' && pass === 'e134209hpc') {
+    if (user === 'admin' && pass === '12345') {
       return NextResponse.next();
     }
 
-    return new NextResponse('ভুল পাসওয়ার্ড!', { status: 401 });
+    return new NextResponse('Wrong Password!', { status: 401 });
   }
 
-  // অন্য সব প্যারামিটারের জন্য পাসওয়ার্ড লাগবে না
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ['/'], // মেইন পেজের প্যারামিটার চেক করবে
+  matcher: '/:path*',
 };
