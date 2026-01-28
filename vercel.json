@@ -1,12 +1,17 @@
 {
   "rewrites": [
     {
-      "source": "/",
-      "has": [{ "type": "query", "key": "p" }],
+      "source": "/result",
       "destination": "https://script.google.com/macros/s/AKfycbywTfaVqqkn-V2FsK5gOQoZRvbattMx1Lnz0Uwko9yAXmSxKmW2WlJ4iIZIuLz5r_H9/exec"
     },
     {
-      "source": "/:path*",
+      "source": "/",
+      "has": [
+        {
+          "type": "query",
+          "key": "p"
+        }
+      ],
       "destination": "https://script.google.com/macros/s/AKfycbywTfaVqqkn-V2FsK5gOQoZRvbattMx1Lnz0Uwko9yAXmSxKmW2WlJ4iIZIuLz5r_H9/exec"
     }
   ]
