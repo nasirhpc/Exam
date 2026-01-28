@@ -7,214 +7,116 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --hpc-green: #006400; /* গাঢ় সবুজ (Deep Green) */
-            --hpc-gold: #FFD700;  /* সোনালী হাইলাইট */
+            --hpc-green: #006400;
+            --hpc-gold: #FFD700;
             --bg-light: #f4f7f6;
-            --text-dark: #222;
         }
 
-        body {
+        body, html {
             font-family: 'Noto Serif Bengali', serif;
             background-color: var(--bg-light);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            margin: 0; padding: 0; height: 100%; width: 100%;
+            overflow-x: hidden;
         }
 
-        /* Header Section */
         .header {
-            width: 100%;
-            background: var(--hpc-green);
-            color: white;
-            padding: 50px 0;
-            text-align: center;
-            border-radius: 0 0 40px 40px;
+            width: 100%; background: var(--hpc-green); color: white;
+            padding: 50px 0; text-align: center; border-radius: 0 0 40px 40px;
             box-shadow: 0 6px 20px rgba(0, 100, 0, 0.2);
-            position: relative;
         }
 
-        .header h1 {
-            margin: 0;
-            font-size: 32px;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .header p {
-            margin: 12px 0 0;
-            font-size: 18px;
-            opacity: 0.85;
-        }
-
-        /* Navigation Tab */
-        .nav-tab {
-            display: flex;
-            background: white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border-radius: 50px;
-            padding: 6px;
-            margin-top: -30px;
-            z-index: 10;
-        }
-
-        .nav-tab a {
-            text-decoration: none;
-            color: var(--hpc-green);
-            padding: 12px 28px;
-            font-weight: 700;
-            border-radius: 50px;
-            transition: 0.3s;
-        }
-
-        .nav-tab a:hover {
-            background: #f0fdf4;
-        }
-
-        .nav-tab a.active {
-            background: var(--hpc-green);
-            color: white;
-        }
-
-        /* Dashboard Content */
         .container {
-            width: 90%;
-            max-width: 500px;
-            margin-top: 45px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            padding-bottom: 60px;
+            width: 90%; max-width: 500px; margin: 45px auto;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
         }
 
-        /* Main Big Button */
         .main-button {
-            grid-column: span 2;
-            background: linear-gradient(135deg, var(--hpc-green), #004d00);
-            color: white;
-            padding: 30px;
-            border-radius: 25px;
-            text-decoration: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 22px;
-            font-weight: 700;
-            box-shadow: 0 10px 25px rgba(0, 100, 0, 0.25);
-            border: 2px solid var(--hpc-gold);
-            transition: 0.4s;
+            grid-column: span 2; background: linear-gradient(135deg, var(--hpc-green), #004d00);
+            color: white; padding: 30px; border-radius: 25px; text-decoration: none;
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 22px; font-weight: 700; border: 2px solid var(--hpc-gold);
         }
 
-        .main-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(0, 100, 0, 0.35);
-        }
-
-        /* Small Cards */
         .card {
-            background: white;
-            padding: 25px 15px;
-            border-radius: 25px;
-            text-decoration: none;
-            color: var(--text-dark);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-            border: 1px solid #e0e0e0;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            border-color: var(--hpc-green);
-            background: #f9fff9;
-            transform: translateY(-5px);
+            background: white; padding: 25px 15px; border-radius: 25px;
+            text-decoration: none; color: #222; display: flex;
+            flex-direction: column; align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06); border: 1px solid #e0e0e0;
         }
 
         .icon-circle {
-            width: 60px;
-            height: 60px;
-            background: #e6f2e6;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 15px;
-            font-size: 28px;
+            width: 60px; height: 60px; background: #e6f2e6; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            margin-bottom: 15px; font-size: 28px;
         }
 
-        .card span {
-            font-weight: 700;
-            font-size: 16px;
+        /* Iframe Overlay */
+        #iframe-container {
+            display: none; position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%; background: white; z-index: 9999;
         }
 
-        /* Footer */
-        .footer {
-            margin-top: auto;
-            padding: 30px;
-            color: #666;
-            font-size: 14px;
-            text-align: center;
-            line-height: 1.6;
-        }
+        iframe { width: 100%; height: 100%; border: none; }
 
-        /* Entry Animation */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .back-btn {
+            position: fixed; bottom: 20px; right: 20px;
+            background: var(--hpc-green); color: white; padding: 10px 20px;
+            border-radius: 50px; cursor: pointer; z-index: 10000; font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
-
-        .container > * {
-            animation: fadeInUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-        }
-
     </style>
 </head>
 <body>
 
-<div class="header">
-    <h1>হামদর্দ পাবলিক কলেজ</h1>
-    <p>অনলাইন রেজাল্ট ও ম্যানেজমেন্ট পোর্টাল</p>
+<div id="main-content">
+    <div class="header">
+        <h1>হামদর্দ পাবলিক কলেজ</h1>
+        <p>অনলাইন পোর্টাল</p>
+    </div>
+
+    <div class="container">
+        <a href="javascript:void(0)" onclick="loadLink('')" class="main-button">
+            <span>🎓 মূল রেজাল্ট দেখুন</span> <span>➜</span>
+        </a>
+
+        <a href="javascript:void(0)" onclick="loadLink('?p=marks')" class="card">
+            <div class="icon-circle">📊</div> <span>মার্কস শিট</span>
+        </a>
+
+        <a href="javascript:void(0)" onclick="loadLink('?p=fail')" class="card">
+            <div class="icon-circle">📉</div> <span>ফেইল লিস্ট</span>
+        </a>
+
+        <a href="javascript:void(0)" onclick="loadLink('?p=sms')" class="card">
+            <div class="icon-circle">📩</div> <span>এসএমএস</span>
+        </a>
+
+        <a href="javascript:void(0)" onclick="loadLink('?p=qmarks')" class="card">
+            <div class="icon-circle">📝</div> <span>প্রশ্ন নম্বর</span>
+        </a>
+    </div>
 </div>
 
-<div class="nav-tab">
-    <a href="/" class="active">হোম</a>
-    <a href="/report">রেজাল্ট</a>
-    <a href="/?p=marks">মার্কস</a>
+<div id="iframe-container">
+    <div class="back-btn" onclick="closeIframe()">🏠 ফিরে যান</div>
+    <iframe id="target-iframe" src=""></iframe>
 </div>
 
-<div class="container">
-    <a href="/result" class="main-button">
-        <span>🎓 মূল রেজাল্ট দেখুন</span>
-        <span>➜</span>
-    </a>
+<script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbywTfaVqqkn-V2FsK5gOQoZRvbattMx1Lnz0Uwko9yAXmSxKmW2WlJ4iIZIuLz5r_H9/exec";
 
-    <a href="/?p=marks" class="card">
-        <div class="icon-circle">📊</div>
-        <span>মার্কস শিট</span>
-    </a>
+    function loadLink(param) {
+        document.getElementById('target-iframe').src = scriptURL + param;
+        document.getElementById('iframe-container').style.display = 'block';
+        document.getElementById('main-content').style.display = 'none';
+    }
 
-    <a href="/?p=fail" class="card">
-        <div class="icon-circle">📉</div>
-        <span>ফেইল লিস্ট</span>
-    </a>
-
-    <a href="/?p=sms" class="card">
-        <div class="icon-circle">📩</div>
-        <span>এসএমএস স্ট্যাটাস</span>
-    </a>
-
-    <a href="/?p=qmarks" class="card">
-        <div class="icon-circle">📝</div>
-        <span>প্রশ্ন নম্বর</span>
-    </a>
-</div>
-
-<div class="footer">
-    © ২০২৬ হামদর্দ পাবলিক কলেজ পোর্টাল <br>
-    কারিগরি সহায়তায়: নাসির
-</div>
+    function closeIframe() {
+        document.getElementById('iframe-container').style.display = 'none';
+        document.getElementById('main-content').style.display = 'block';
+        document.getElementById('target-iframe').src = "";
+    }
+</script>
 
 </body>
 </html>
