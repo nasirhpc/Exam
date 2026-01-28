@@ -20,7 +20,7 @@ export function middleware(req) {
     const pass = auth[1];
 
     // এখানে আপনার পছন্দের ইউজার এবং পাসওয়ার্ড দিন
-    if (user === 'admin' && pass === '12345') {
+    if (user === 'admin' && pass === 'e134209hpc') {
       return NextResponse.next();
     }
 
