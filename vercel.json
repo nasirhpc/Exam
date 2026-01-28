@@ -1,18 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/result",
+      "source": "/report",
       "destination": "https://script.google.com/macros/s/AKfycbywTfaVqqkn-V2FsK5gOQoZRvbattMx1Lnz0Uwko9yAXmSxKmW2WlJ4iIZIuLz5r_H9/exec"
     },
     {
-      "source": "/",
-      "has": [
-        {
-          "type": "query",
-          "key": "p"
-        }
-      ],
-      "destination": "https://script.google.com/macros/s/AKfycbywTfaVqqkn-V2FsK5gOQoZRvbattMx1Lnz0Uwko9yAXmSxKmW2WlJ4iIZIuLz5r_H9/exec"
+      "source": "/(.*)",
+      "destination": "https://script.google.com/macros/s/AKfycbywTfaVqqkn-V2FsK5gOQoZRvbattMx1Lnz0Uwko9yAXmSxKmW2WlJ4iIZIuLz5r_H9/exec$1"
     }
   ]
 }
